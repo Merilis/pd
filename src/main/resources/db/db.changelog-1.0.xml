@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+  <property name="now" value="now()"/>
+
+  <!-- TODO deleteCascade="true" validation -->
+  <changeSet logicalFilePath="db.changelog-1.0.xml" id="Create tables and constraints" author="Andrey Sergeev">
+
+    <createTable tableName="user">
+      <column name="id" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="first_name" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_name" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="email" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password" type="VARCHAR(200)"/>
+    </createTable>
+    <addUniqueConstraint tableName="user" columnNames="email" constraintName="unique_user_email"/>
+
+    <createTable tableName="user_role">
+      <column name="id" type="INT">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="VARCHAR(20)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addUniqueConstraint tableName="user_role" columnNames="name" constraintName="unique_userrole_name"/>
+
+    <createTable tableName="user_in_role">
+      <column name="id" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="user_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="user_role_id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addForeignKeyConstraint constraintName="FK_user_in_role_user_id" deleteCascade="true"
+                             baseColumnNames="user_id" baseTableName="user_in_role"
+                             referencedColumnNames="id" referencedTableName="user" />
+    <addForeignKeyConstraint constraintName="FK_user_in_role_user_role_id" deleteCascade="true"
+                             baseColumnNames="user_role_id" baseTableName="user_in_role"
+                             referencedColumnNames="id" referencedTableName="user_role" />
+  </changeSet>
+
+  <changeSet logicalFilePath="db.changelog-1.0.xml" id="Initial data" author="Andrey Sergeev">
+
+    <!-- User roles -->
+    <insert tableName="user_role">
+      <column name="id" value="1"/>
+      <column name="name" value="Administrator"/>
+    </insert>
+    <insert tableName="user_role">
+      <column name="id" value="2"/>
+      <column name="name" value="Moderator"/>
+    </insert>
+    <insert tableName="user_role">
+      <column name="id" value="3"/>
+      <column name="name" value="Viewer"/>
+    </insert>
+
+    <!-- Users -->
+    <insert tableName="user">
+      <column name="id" value="1"/>
+      <column name="first_name" value="Andrey"/>
+      <column name="last_name" value="Sergeev"/>
+      <column name="email" value="andrey.sergeev@helmes.ee"/>
+      <column name="password" value="s3cret"/>
+    </insert>
+
+    <!-- User In Roles -->
+    <insert tableName="user_in_role">
+      <column name="user_id" value="1"/>
+      <column name="user_role_id" value="1"/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>

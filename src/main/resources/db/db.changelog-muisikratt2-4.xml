@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+  <changeSet logicalFilePath="db.changelog-muisikratt2-4.xml" id="Add muis_data" author="Merilis">
+
+    <createTable tableName="muis_data">
+      <column name="id_local" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="muis_link" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="identifier" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="essence" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="title" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="person" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="group" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="dcterms_date" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="took_place_at" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="id_collection_forms_part_of" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="id" type="INT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="id_extra_note" type="INT">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <!-- Muis datas -->
+    <insert tableName="muis_data">
+    <column name="id_local" value="1"/>
+    <column name="muis_link" value="http://opendata.muis.ee/object/350951"/>
+      <column name="identifier" value="HMK _ 717 AJ 266"/>
+      <column name="essence" value="konks; saapad"/>
+      <column name="title" value="Saapanööpide kinnitamise konks"/>
+      <column name="person" value="Test person name"/>
+      <column name="group" value="Test group name"/>
+      <column name="dcterms_date" value="arvatav aeg .1930 - 1940"/>
+      <column name="took_place_at" value="Eesti Harju"/>
+      <column name="id_collection_forms_part_of" value="1"/>
+      <column name="description" value="This is test description"/>
+      <column name="id" value="1"/>
+      <column name="id_extra_note" value="1"/>
+  </insert>
+    <insert tableName="muis_data">
+      <column name="id_local" value="2"/>
+      <column name="muis_link" value="http://opendata.muis.ee/object/348360"/>
+      <column name="identifier" value="HMK _ 47 AJ 21"/>
+      <column name="essence" value="tahvel"/>
+      <column name="title" value="koolitahvel"/>
+      <column name="person" value="Test person name"/>
+      <column name="group" value="Test group name"/>
+      <column name="dcterms_date" value="arvatav aeg - 1940"/>
+      <column name="took_place_at" value="Eesti"/>
+      <column name="id_collection_forms_part_of" value="3"/>
+      <column name="description" value="This is test description"/>
+      <column name="id" value="1"/>
+      <column name="id_extra_note" value="2"/>
+    </insert>
+
+  </changeSet>
+  
+</databaseChangeLog>

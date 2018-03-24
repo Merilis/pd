@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+  <!-- TODO deleteCascade="true" validation -->
+  <changeSet logicalFilePath="db.changelog-valiit-1.xml" id="Create employee table" author="Andrey Sergeev">
+
+    <createTable tableName="employee">
+      <column name="id" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="first_name" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_name" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet logicalFilePath="db.changelog-valiit-1.xml" id="Initial data" author="Andrey Sergeev">
+
+    <insert tableName="employee">
+      <column name="first_name" value="Mickey"/>
+      <column name="last_name" value="Hiir"/>
+    </insert>
+    <insert tableName="employee">
+      <column name="first_name" value="Donald"/>
+      <column name="last_name" value="Part"/>
+    </insert>
+    <insert tableName="employee">
+      <column name="first_name" value="Pluto"/>
+      <column name="last_name" value="Koer"/>
+    </insert>
+    <insert tableName="employee">
+      <column name="first_name" value="Daisy"/>
+      <column name="last_name" value="Part"/>
+    </insert>
+    <insert tableName="employee">
+      <column name="first_name" value="Robert"/>
+      <column name="last_name" value="Part"/>
+    </insert>
+
+  </changeSet>
+  
+</databaseChangeLog>

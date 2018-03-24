@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+  <changeSet logicalFilePath="db.changelog-muisikratt2-3.xml" id="Add extra_note" author="Merilis">
+
+    <createTable tableName="extra_note">
+      <column name="id_extra_note" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="muis_link" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="date" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="e_mail" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="client_name" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="extra_note_text" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <!-- Extra notes -->
+    <insert tableName="extra_note">
+    <column name="id_extra_note" value="2"/>
+    <column name="muis_link" value="http://opendata.muis.ee/object/350951"/>
+      <column name="date" value="2017-11-28 11:21:08"/>
+      <column name="e_mail" value="test@test.ee"/>
+      <column name="client_name" value="Test Test"/>
+      <column name="extra_note_text" value="This is a test extra note."/>
+  </insert>
+    <insert tableName="extra_note">
+      <column name="id_extra_note" value="3"/>
+      <column name="muis_link" value="http://opendata.muis.ee/object/348360"/>
+      <column name="date" value="2017-12-12 00:03:08"/>
+      <column name="e_mail" value="test2@test.ee"/>
+      <column name="client_name" value="Test Testname Test"/>
+      <column name="extra_note_text" value="This is another test extra note."/>
+    </insert>
+
+  </changeSet>
+  
+</databaseChangeLog>

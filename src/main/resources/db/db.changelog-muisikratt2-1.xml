@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet logicalFilePath="db.changelog-muisikratt2-1.xml" id="Add collection" author="Merilis">
+
+        <createTable tableName="collection">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="collection_name" type="Varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Collection names -->
+        <insert tableName="collection">
+            <column name="id" value="1"/>
+            <column name="collection_name" value="Example"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="2"/>
+            <column name="collection_name" value="This is simple test"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="3"/>
+            <column name="collection_name" value="Arheoloogia kogu"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="4"/>
+            <column name="collection_name" value="Audio-video kogu"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="5"/>
+            <column name="collection_name" value="Fotokogu"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="6"/>
+            <column name="collection_name" value="Geoloogia"/>
+        </insert>
+        <insert tableName="collection">
+            <column name="id" value="7"/>
+            <column name="collection_name" value="Kunstikogu"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+  <changeSet logicalFilePath="db.changelog-muisikratt2-2.xml" id="Add part" author="Merilis">
+
+    <createTable tableName="part">
+      <column name="id_collection_forms_part_of" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="part_name" type="Varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <!-- Part names -->
+    <insert tableName="part">
+    <column name="id_collection_forms_part_of" value="1"/>
+    <column name="part_name" value="Keila väikelinnus"/>
+  </insert>
+    <insert tableName="part">
+      <column name="id_collection_forms_part_of" value="2"/>
+      <column name="part_name" value="Maardu Keemiakombinaadi muuseum"/>
+    </insert>
+    <insert tableName="part">
+      <column name="id_collection_forms_part_of" value="3"/>
+      <column name="part_name" value="Amandus Adamsoni Ateljeemuuseum"/>
+    </insert>
+
+  </changeSet>
+  
+</databaseChangeLog>
